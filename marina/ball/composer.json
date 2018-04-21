@@ -1,0 +1,11 @@
+{
+    "name": "marin/ball",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Marina Yazykova",
+            "email": "4152@htl.rennweg.at"
+        }
+    ],
+    "require": {}
+}

@@ -1,0 +1,8 @@
+{
+  "autoload": {
+    "psr-4": {"Marina\\": "marina/"}
+  },
+  "require": {
+    "typo3fluid/fluid": "dev-master"
+  }
+}
