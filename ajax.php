@@ -15,11 +15,11 @@ $baelle = array(
     new Marina\Ball\Ball('Sonderball',40, 'Spezial'),
     new Marina\Ball\Ball('Sonderball',22, 'Plastik'),
     new Marina\Ball\Ball('Bester Ball',310, 'Gummi'));
-
-echo $baelle[3];
-echo $baelle[4];
-echo $baelle[5];
-echo $baelle[6];
+echo "</br>";
+echo $baelle[3]."</br>";
+echo $baelle[4]."</br>";
+echo $baelle[5]."</br>";
+echo $baelle[6]."</br>";
 
 
 ?>

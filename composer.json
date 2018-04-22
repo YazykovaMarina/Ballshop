@@ -1,9 +1,24 @@
 {
+  "name": "marina/ball",
+  "description": "Ball Store",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Marina Yazykova",
+      "email": "4152@htl.rennweg.at"
+    }
+  ],
   "autoload": {
     "psr-4": {"Marina\\": "marina/"}
   },
   "require": {
-    "typo3fluid/fluid": "dev-master"
+    "yazykovamarina/ballshop" : "v1.0",
+    "typo3fluid/fluid": "^2.4"
   }
+  /*"repositories":[
+    {
+      "url": "https://github.com/SabrinaNovak/Flags",
+      "type": "vcs"
+    }]*/
+
 }
-//noch im require den ersten Tag hinzufügen
