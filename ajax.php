@@ -7,6 +7,19 @@
  */
 include('vendor/autoload.php');
 
-$b = new Marina\Ball\Ball('Spezialball',30, 'Kautschuk');
+$baelle = array(
+    new Marina\Ball\Ball('Spezialball',30, 'Kautschuk'),
+    new Marina\Ball\Ball('Sonderball',70, 'Metall'),
+    new Marina\Ball\Ball('Sonderball',80, 'Metall'),
+    new Marina\Ball\Ball('Sonderball',10, 'Metall'),
+    new Marina\Ball\Ball('Sonderball',40, 'Spezial'),
+    new Marina\Ball\Ball('Sonderball',22, 'Plastik'),
+    new Marina\Ball\Ball('Bester Ball',310, 'Gummi'));
 
-echo $b;
+echo $baelle[3];
+echo $baelle[4];
+echo $baelle[5];
+echo $baelle[6];
+
+
+?>
