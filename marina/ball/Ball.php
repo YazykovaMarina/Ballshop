@@ -56,5 +56,11 @@ EOT;
     public function getMaterial(){
         return $this->material;
     }
+    public function getName(){
+        return $this->name;
+    }
+    public function getDurchmesser(){
+        return $this->durchmesser;
+    }
 
 }

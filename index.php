@@ -1,22 +1,30 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: marin
- * Date: 22.04.2018
- * Time: 23:28
- */
-echo "echo echo echo echo";
 
-include('vendor/autoload.php');
+include "./vendor/autoload.php" ;
+use TYPO3Fluid\Fluid;
 
 $baelle = array(
-    new Marina\Ball\Ball('Spezialball',30, 'Kautschuk'),
-    new Marina\Ball\Ball('Sonderball',70, 'Metall'),
-    new Marina\Ball\Ball('Sonderball',80, 'Metall'),
-    new Marina\Ball\Ball('Sonderball',10, 'Metall'),
-    new Marina\Ball\Ball('Sonderball',40, 'Spezial'),
-    new Marina\Ball\Ball('Sonderball',22, 'Plastik'),
-    new Marina\Ball\Ball('Bester Ball',310, 'Gummi'));
+    new Marina\Ball\Ball('Spezialball', 30, 'Kautschuk'),
+    new Marina\Ball\Ball('Sonderball', 70, 'Metall'),
+    new Marina\Ball\Ball('Sonderball', 80, 'Metall'),
+    new Marina\Ball\Ball('Sonderball', 10, 'Metall'),
+    new Marina\Ball\Ball('Sonderball', 40, 'Spezial'),
+    new Marina\Ball\Ball('Sonderball', 22, 'Plastik'),
+    new Marina\Ball\Ball('Bester Ball', 310, 'Gummi'));
+
+
+
+/*
+if (isset($_GET["format"]) and $_GET["format"] == "html") {
+    echo $baelle[0] . "<br />";
+    echo $baelle[1] . "<br />";
+    echo $baelle[2] . "<br />";
+} else if (isset($_GET["format"]) and ($_GET["format"] == "json")) {
+    echo $baelle[0]->toJSON() . "<br />";
+    echo $baelle[1]->toJSON() . "<br />";
+    echo $baelle[2]->toJSON() . "<br />";
+}
+*/
 
 // Initializing the View: rendering in Fluid takes place through a View instance
 // which contains a RenderingContext that in turn contains things like definitions
@@ -28,19 +36,35 @@ $paths = $view->getTemplatePaths();
 
 // Assigning the template path and filename to be rendered. Doing this overrides
 // resolving normally done by the TemplatePaths and directly renders this file.
-$paths->setTemplatePathAndFilename(_DIR_ . '/templates/ballfluid.html');
+$paths->setTemplatePathAndFilename(__DIR__ . '/templates/ballfluid.html');
 
-// In this example we assign all our variables in one array. Alternative is
-// to repeatedly call $view->assign('name', 'value').
+foreach ($baelle as $ball) {
+
+    // in der Adresszeile hinten dran anhängen -->   ?format=html
+    // Get Parameter mit dem Value html oder JSON
+    //zusätlich kontrollieren wir ob das Material des Balls dem Get Parameter "material" entspricht
+    //http://localhost/2018_Ball/index.php?format=html&material=Kautschuk
+    if (isset($_GET["format"]) and $_GET["format"] == "html" and $ball->getMaterial() == $_GET["material"]) {
+        $view->assignMultiple(
+            array(
+                "Balln" => $ball->getName(),
+                "Ballm" => $ball->getMaterial(),
+                "Balld" => $ball->getDurchmesser(),
+                "Ballv" => $ball->calcVolume()
+
+            )
+        );
+        echo $ball->getName();
+    } else if (isset($_GET["format"]) and ($_GET["format"] == "json") and $ball->getMaterial() == $_GET["material"]) {
+        echo $ball->toJSON() . "<br />";
+    }
+
+}
+
 $view->assignMultiple(
-    array (
-        "Ball1" => $baelle[0],
-        "Ball2" => $baelle[1],
-        "Ball3" => $baelle[2],
-        "Ball4" => $baelle[3],
-        "Ball5" => $baelle[4],
-        "Ball6" => $baelle[5],
-        "Ball7" => $baelle[6]
+    array(
+        "n" => $baelle[0]->getName()
+
     )
 );
 
